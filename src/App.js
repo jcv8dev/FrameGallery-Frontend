@@ -4,7 +4,7 @@ import AuthOutlet from '@auth-kit/react-router/AuthOutlet'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AdminView from "./pages/admin/AdminView";
 import HomeView from "./pages/HomeView";
-import IngestView from "./pages/admin/IngestView";
+import ImageEditView from "./pages/admin/ImageEditView";
 import ImageView from "./pages/ImageView";
 import LoginView from "./pages/admin/LoginView";
 import createStore from 'react-auth-kit/createStore';
@@ -39,7 +39,7 @@ function App() {
                             <Route path={"/admin/onboarding"} element={<OnboardingView/>}></Route>
                             <Route element={<AuthOutlet fallbackPath='/admin/login' />}>
                                 <Route path={"/admin"} element={<AdminView/>}></Route>
-                                <Route path={"/admin/ingest"} element={<IngestView/>}></Route>
+                                <Route path={"/admin/:id/edit"} element={<ImageEditView/>}></Route>
                             </Route>
                         </Routes>
                     </BrowserRouter>
