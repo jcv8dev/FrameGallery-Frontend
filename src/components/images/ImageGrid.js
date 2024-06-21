@@ -1,35 +1,42 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
-import {Col, Container, Row} from "react-bootstrap";
 import ImageGridImage from "./ImageGridImage";
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 
-const ImageGrid = () => {
+const ImageGrid = (props) => {
 
     const authHeader = useAuthHeader();
     const [imagePaths, setImagePaths] = useState([]);  // Step 2: Initialize state
 
     let fetchImages = () => {
-        axios.get("/api/rest/v1/image/all?showAll=true", {headers: {Authorization: authHeader}})
+        axios.get(props.api, {headers: {Authorization: authHeader}})
             .then(res => {
             setImagePaths(res.data)
         }).catch(err => {
+            console.error(err)
         })
     }
 
     useEffect(() => {
         fetchImages()
-    }, []);
+        console.debug("Rendered ImageGrid")
+    }, [props.trigger]);
+
 
     return(
         <>
-            <Container>
-                <Row>
+
+            <ResponsiveMasonry>
+                <Masonry>
                     {imagePaths.map((image) => (
-                        <Col xs={6}><img src={`localhost:8080/api/rest/v1/image/${image}`} /> </Col>
+                        <ImageGridImage cursor={"pointer"} clickHandler={props.clickHandler} src={`http://localhost:8080/api/rest/v1/image/${image}`}/>
                     ))}
-                </Row>
-            </Container>
+                </Masonry>
+            </ResponsiveMasonry>
+
+
+
         </>
     )
 }

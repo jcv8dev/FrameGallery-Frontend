@@ -1,9 +1,11 @@
 const ImageGridImage = (props) => {
 
+    let cursor = props.cursor || "default"
 
     return (
-        <img src={`localhost:8080/api/rest/v1/image/${props.image}`}/>
-
+        <div className={"bg-light-subtle p-2 m-1 shadow-sm"}>
+            <img style={{cursor: cursor}} className={"img-fluid"} src={props.src} alt={""} onClick={props.clickHandler}/>
+        </div>
     )
 }
 
