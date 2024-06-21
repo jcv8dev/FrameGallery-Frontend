@@ -7,7 +7,7 @@ import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 const ImageGrid = (props) => {
 
     const authHeader = useAuthHeader();
-    const [imagePaths, setImagePaths] = useState([]);  // Step 2: Initialize state
+    const [imagePaths, setImagePaths] = useState([]);
 
     let fetchImages = () => {
         axios.get(props.api, {headers: {Authorization: authHeader}})
@@ -26,7 +26,6 @@ const ImageGrid = (props) => {
 
     return(
         <>
-
             <ResponsiveMasonry>
                 <Masonry>
                     {imagePaths.map((image) => (
@@ -34,9 +33,6 @@ const ImageGrid = (props) => {
                     ))}
                 </Masonry>
             </ResponsiveMasonry>
-
-
-
         </>
     )
 }

@@ -6,6 +6,7 @@ import axios from "axios";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import {useEffect, useState} from "react";
 import GenericModal from "../../components/forms/GenericModal";
+import Data from "bootstrap/js/src/dom/data";
 
 const AdminView = () => {
 
@@ -30,8 +31,13 @@ const AdminView = () => {
 
     const triggerReIndex = () => {
         let orphans
-        axios.post("/api/rest/v1/image/orphans/index", {}, {headers: {Authorization: authToken}}).then(res => {
+        axios.post("/api/rest/v1/image/orphans/index", {}, {headers: {Authorization: authToken}})
+            .then(res => {
             orphans = res.data
+
+            console.debug("Rerender Grid (Indexed)")
+            setGridTrigger(prevGridTrigger => prevGridTrigger + 1);
+
         }).catch(err => {
             console.error(err)
         })
@@ -61,7 +67,7 @@ const AdminView = () => {
             }
         })
             .then(r => {
-                console.log("Rerender Grid?")
+                console.log("Rerender Grid (Upload)")
                 setGridTrigger(prevGridTrigger => prevGridTrigger + 1);
             })
             .catch()
@@ -70,7 +76,8 @@ const AdminView = () => {
     return(
         <>
             <LogoBanner />
-            <Row className={"pb-3"}>
+            <Row className={"pb-4"}>
+                <Col></Col>
                 <Col className={"mx-auto"}>
                     <GenericModal showButtonText={"Upload"} titleText={"Upload a new image"} saveButtonText={"Upload"} saveHandler={uploadHandler}>
                         <Form>
@@ -80,21 +87,26 @@ const AdminView = () => {
                         </Form>
                     </GenericModal>
                 </Col>
-                <Col className={"mx-auto"}>
-                    <Button className={"w-100"} onClick={triggerReIndex}>Index</Button>
-                </Col>
+
                 <Col className={"mx-auto"}>
                     <Button className={"w-100"} onClick={logout}>Logout</Button>
                 </Col>
+                <Col></Col>
             </Row>
-            <Row>
-                <Col xs={10}className={"mx-auto"}>
-                    <p className={"fst-italic text-center"}>Click on an image to edit its metadata and visibility</p>
+            <Row className={""}>
+                <Col xs={10} className={"mx-auto"}>
+                    <p className={"fst-italic text-center mb-2"}>Click on an image to edit its metadata and visibility</p>
                 </Col>
             </Row>
-            <Row>
+            <Row className={"pb-3"}>
                 <ImageGrid trigger={gridTrigger} api={"/api/rest/v1/image/all?showAll=true"} clickHandler={imageClickHandler}/>
             </Row>
+            <Row className={"pb-3"}>
+                <Col xs={4} className={"mx-auto "}>
+                    <Button className={"w-100"} onClick={triggerReIndex}>Index Orphans</Button>
+                </Col>
+            </Row>
+
         </>
     )
 }
