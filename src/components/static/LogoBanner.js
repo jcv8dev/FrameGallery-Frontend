@@ -7,7 +7,6 @@ const LogoBanner = () => {
     const [artistInfo, setArtistInfo] = useState({})
 
     const fetchArtistInfo = async () => {
-        let artistInfo_ = {}
         await axios.get("/api/rest/v1/artist/info").then(res => {
             setArtistInfo(res.data);
         }).catch(err => {
