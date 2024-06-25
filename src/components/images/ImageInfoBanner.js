@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import {Col, Container, Row} from "react-bootstrap";
+import ImagePropertiesRow from "./info/properties/ImagePropertiesRow";
+import HorizontalDivider from "../static/HorizontalDivider";
 
 const ImageInfoBanner = (props) => {
     const [imageInfo, setImageInfo] = useState({})
@@ -23,15 +25,18 @@ const ImageInfoBanner = (props) => {
 
     return(
         <>
-            <Container>
-                <Row>
-                    <Col>
-                        <p className={"text-center fs-3 mb-2"}>"{imageInfo.title}"</p>
-                        <p className={"text-center fst-italic fs-5 mb-2"}>{imageInfo.description}</p>
-                    </Col>
-                </Row>
-            </Container>
-
+            <Row>
+                <Col xs={"auto"} className={"mx-auto"}>
+                    <ImagePropertiesRow id={props.id.split(".")[0]} />
+                </Col>
+            </Row>
+            <HorizontalDivider />
+            <Row>
+                <Col>
+                    {imageInfo.title !== null && imageInfo.title !== undefined && imageInfo.title .length > 0 ?  <p className={"text-center fs-3 mb-2"}>"{imageInfo.title}"</p> : <></>}
+                    {imageInfo.description !== null && imageInfo.description !== undefined && imageInfo.description.length > 0 ? <p className={"text-center fst-italic fs-5 mb-2"}>{imageInfo.description}</p> : <></>}
+                </Col>
+            </Row>
         </>
     )
 }

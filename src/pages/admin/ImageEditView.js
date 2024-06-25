@@ -7,12 +7,13 @@ import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import {useEffect, useState} from "react";
 import ImageEditor from "../../components/administration/ImageEditor";
 import FullScreenImage from "../../components/images/FullScreenImage";
+import ImagePropertiesRow from "../../components/images/info/properties/ImagePropertiesRow";
+import HorizontalDivider from "../../components/static/HorizontalDivider";
 
 const ImageEditView = () => {
     let { id } = useParams();
     let authHeader = useAuthHeader()
     const [imageTrigger, setImageTrigger] = useState(0)
-
 
     const setImageInfo = (event, newImageInfo) => {
         event.preventDefault()
@@ -31,10 +32,18 @@ const ImageEditView = () => {
                     <Button variant={"primary"} className={"w-100"} onClick={() => {window.location = "/admin"}}>Go back</Button>
                 </Col>
             </Row>
-            <Row className={"pb-3 mx-1"} style={{}}>
-                <FullScreenImage  cursor={""} src={`http://localhost:8080/api/rest/v1/image/${id}`}/>
+            <Row className={"pb-3"} style={{}}>
+                <FullScreenImage id={id} cursor={""} />
             </Row>
-            <Row className={"pb-3"}>
+            <Row>
+                <Col xs={"auto"} className={"mx-auto"}>
+                    <ImagePropertiesRow id={id}/>
+                </Col>
+            </Row>
+            <Row className={"fg-w-limit-xl mx-auto"}>
+                <HorizontalDivider />
+            </Row>
+            <Row className={"pb-3 fg-w-limit-xl mx-auto"}>
                 <ImageEditor trigger={imageTrigger} submitHandler={setImageInfo} id={id}/>
             </Row>
 
