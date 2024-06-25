@@ -52,29 +52,33 @@ const ImageEditor = (props) => {
         <>
             <Form onSubmit={submitHandler}>
                 <Row className={"pb-3"}>
-                    <Col xs={12} sm={4} md={3} lg={2} className={"pb-2"}>
+                    <Col xs={"auto"} className={"pb-2 px-1"}>
                         <InputGroup>
-                            <InputGroup.Checkbox type={"checkbox"} id={"publishedCheck"} checked={newImageStatus.published} onChange={checkHandler} name={"published"}>
+                            <InputGroup.Checkbox type={"checkbox"} id={"publishedCheck"}
+                                                 checked={newImageStatus.published} onChange={checkHandler}
+                                                 name={"published"}>
                             </InputGroup.Checkbox>
                             <InputGroupText>Published</InputGroupText>
                         </InputGroup>
                     </Col>
-                    <Col xs={12} sm={8} md={9} lg={5} className={"pb-2"}>
+                    <Col xs={12} sm={8} md={9} lg={5} className={"pb-2 px-1"}>
                         <InputGroup>
                             <InputGroup.Text >Title</InputGroup.Text>
                             <Form.Control name={"title"} onChange={changeHandler} value={newImageStatus.title}/>
                         </InputGroup>
                     </Col>
-                    <Col sm={12} lg={5} className={"pb-2"}>
+                    <Col sm={12} lg={5} className={"pb-2 px-1"}>
                         <InputGroup>
                             <InputGroup.Text>Description</InputGroup.Text>
-                            <Form.Control name={"description"} as="textarea" aria-label="With textarea" onChange={changeHandler} value={newImageStatus.description}/>
+                            <Form.Control name={"description"} as="textarea"
+                                          aria-label="With textarea" onChange={changeHandler}
+                                          value={newImageStatus.description}/>
                         </InputGroup>
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={4} sm={3} md={2} className={"ms-auto"}>
-                        <Button variant={"primary"} className={"w-100"} type={"submit"}>Publish</Button>
+                    <Col xs={4} sm={3} md={2} className={"mx-auto"}>
+                        <Button variant={"primary"} className={"w-100"} type={"submit"}>Save</Button>
                     </Col>
                 </Row>
             </Form>
