@@ -29,7 +29,7 @@ function App() {
 
     return (
         <>
-            <Container fluid={"xl"} style={{minHeight: "94vh", maxWidth: "90vw"}} >
+            <Container fluid={"xl"} style={{minHeight: "91vh", maxWidth: "90vw"}} >
                 <AuthProvider store={store}>
                     <BrowserRouter>
                         <Routes>
