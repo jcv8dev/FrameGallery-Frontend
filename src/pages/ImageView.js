@@ -11,8 +11,8 @@ const ImageView = () => {
     return(
         <>
             <LogoBanner />
-            <Row>
-                <FullScreenImage src={`http://localhost:8080/api/rest/v1/image/${id}`} />
+            <Row className={"pb-3"}>
+                <FullScreenImage id={id} />
             </Row>
             <Row className={"pb-3"}>
                 <ImageInfoBanner id={id} />

@@ -4,7 +4,7 @@ import LogoBanner from "../components/static/LogoBanner";
 const HomeView = () => {
 
     const imageClickHandler = (event) => {
-        let path = event.target.src
+        let path = event.target.id
         let filename = path.split("/")
         let id = filename[filename.length-1]
         window.location = `/image/${id}/`

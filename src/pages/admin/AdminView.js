@@ -6,7 +6,6 @@ import axios from "axios";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import {useEffect, useState} from "react";
 import GenericModal from "../../components/forms/GenericModal";
-import Data from "bootstrap/js/src/dom/data";
 
 const AdminView = () => {
 
@@ -49,9 +48,7 @@ const AdminView = () => {
     }, []);
 
     const imageClickHandler = (event) => {
-        let path = event.target.src
-        let filename = path.split("/")
-        let id = filename[filename.length-1]
+        let id = event.target.id
         window.location = `/admin/${id}/edit`
     }
 
@@ -99,7 +96,7 @@ const AdminView = () => {
                 </Col>
             </Row>
             <Row className={"pb-3"}>
-                <ImageGrid trigger={gridTrigger} api={"/api/rest/v1/image/all?showAll=true"} clickHandler={imageClickHandler}/>
+                <ImageGrid trigger={gridTrigger} api={"/api/rest/v1/image/all?showAll=true"} highlightUnpublished={true} clickHandler={imageClickHandler}/>
             </Row>
             <Row className={"pb-3"}>
                 <Col xs={4} className={"mx-auto "}>
