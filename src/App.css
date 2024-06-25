@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.fg-w-limit-xl {
+  max-width: 1300px;
+}
+
+.fg-unpublished-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);;
+  transition: background-color 0.3s, color 0.3s;
+  z-Index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer
+}
+
+.fg-unpublished-cover:hover {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(0,0,0,0);
+}
