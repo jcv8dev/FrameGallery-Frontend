@@ -3,8 +3,6 @@ import {useEffect, useState} from "react";
 import ImageProperty from "./ImageProperty";
 import axios from "axios";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
-import imageProperty from "./ImageProperty";
-import popover from "bootstrap/js/src/popover";
 
 const ImagePropertiesRow = (props) => {
 
@@ -13,7 +11,7 @@ const ImagePropertiesRow = (props) => {
 
 
     const getImageInfo = () => {
-        axios.get(`api/rest/v1/image/${props.id.split(".")[0]}`, {headers: authHeader})
+        axios.get(`/api/rest/v1/image/${props.id.split(".")[0]}`, {headers: authHeader})
             .then(res => {
                 setImageProperties(res.data.imagePropertyList)
                 console.debug(res.data.imagePropertyList)

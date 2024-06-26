@@ -24,7 +24,7 @@ const OnboardingForm = () => {
             password: state.password
         };
 
-        axios.post(`http://localhost:8080/api/rest/v1/artist/auth/register`, JSON.stringify(registerRequest))
+        axios.post(`/api/rest/v1/artist/auth/register`, JSON.stringify(registerRequest))
             .then(res => {
                 if(res.status === 201){
                     window.location = "/admin/login"

@@ -26,7 +26,7 @@ const LoginForm = () => {
             password: state.password
         };
 
-        axios.post(`api/rest/v1/artist/auth/login`, JSON.stringify(authRequest))
+        axios.post(`/api/rest/v1/artist/auth/login`, JSON.stringify(authRequest))
             .then(async res => {
                 if(res.status === 200){
                     if(signIn({

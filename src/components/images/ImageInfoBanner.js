@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import ImagePropertiesRow from "./info/properties/ImagePropertiesRow";
 import HorizontalDivider from "../static/HorizontalDivider";
 
@@ -14,7 +14,7 @@ const ImageInfoBanner = (props) => {
     }, []);
 
     const getImageInfo = () => {
-        axios.get(`api/rest/v1/image/${props.id.split(".")[0]}`, {headers: authHeader})
+        axios.get(`/api/rest/v1/image/${props.id.split(".")[0]}`, {headers: authHeader})
             .then(res => {
                 setImageInfo(res.data)
             })
