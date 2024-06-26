@@ -15,7 +15,7 @@ import {Container} from "react-bootstrap";
 import Footer from "./components/static/Footer";
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost:8080';
+// axios.defaults.baseURL = 'http://localhost:8080';
 axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
